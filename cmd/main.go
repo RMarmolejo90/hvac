@@ -1,17 +1,20 @@
-package cmd
+package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/rmarmolejo90/hvac/config/log"
 	"github.com/rmarmolejo90/hvac/internal/db"
 )
 
 func main() {
 
+	log.Init()
 	db.ConnectDB()
 
 	// start server
 	r := gin.Default()
 	r.GET("/", func(c *gin.Context) {
+
 		c.JSON(200, gin.H{
 			"message": "Server is Running!!",
 		})

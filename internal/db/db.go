@@ -1,10 +1,11 @@
 package db
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/rmarmolejo90/hvac/config"
-	"github.com/rmarmolejo90/hvac/pkg/log"
+	"github.com/rmarmolejo90/hvac/config/log"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -19,11 +20,14 @@ func ConnectDB() {
 	if err != nil {
 		log.Fatalf("Error connecting to database: %v", err)
 	}
-	log.Infof("\n\n*** Connected To The Database ***\n\n")
+	fmt.Printf("\n\n")
+	log.Infof("Connected To The Database!")
+	fmt.Printf("\n\n")
 
 	// Need to add all models for migration
 	err = DB.AutoMigrate()
 	if err != nil {
 		log.Errorf("Error Migrating the database: " + err.Error())
 	}
+
 }
