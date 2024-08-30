@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/rmarmolejo90/hvac/config"
-	"github.com/rmarmolejo90/hvac/config/log"
+	"github.com/rmarmolejo90/hvac/internal/config"
+	"github.com/rmarmolejo90/hvac/internal/config/log"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

@@ -1,5 +1,4 @@
-package models
-
+package domain
 import "gorm.io/gorm"
 
 type Note struct {
