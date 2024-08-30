@@ -2,7 +2,7 @@ package initializers
 
 import (
 	"github.com/rmarmolejo90/hvac/internal/config/log"
-	"github.com/rmarmolejo90/hvac/internal/db"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 )
 
 // Init initializes all the required components such as logging and database connections.
@@ -11,5 +11,5 @@ func Init() {
 	log.Init()
 
 	// Connect to the database
-	db.ConnectDB()
+	postgresDB.ConnectDB()
 }

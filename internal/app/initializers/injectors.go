@@ -4,6 +4,7 @@ import (
 	"github.com/rmarmolejo90/hvac/internal/adapters/database/postgres"
 	"github.com/rmarmolejo90/hvac/internal/adapters/http"
 	"github.com/rmarmolejo90/hvac/internal/app/services"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -30,22 +31,22 @@ type Handlers struct {
 // InitHandlers initializes all the handlers with their respective services.
 func InitHandlers() *Handlers {
 	// Initialize Repositories
-	customerRepo := postgres.NewCustomerRepository()
-	locationRepo := postgres.NewLocationRepository()
-	technicianRepo := postgres.NewTechnicianRepository()
-	jobRepo := postgres.NewJobRepository()
-	jobStatusHistoryRepo := postgres.NewJobStatusHistoryRepository()
-	serviceRepo := postgres.NewServiceRepository()
-	invoiceRepo := postgres.NewInvoiceRepository()
-	paymentRepo := postgres.NewPaymentRepository()
-	quoteRepo := postgres.NewQuoteRepository()
-	equipmentRepo := postgres.NewEquipmentRepository()
-	consumablesRepo := postgres.NewConsumablesRepository()
-	stockRepo := postgres.NewStockRepository()
-	tagRepo := postgres.NewTagRepository()
-	noteRepo := postgres.NewNoteRepository()
-	hourlyRateRepo := postgres.NewHourlyRateRepository()
-	scheduleRepo := postgres.NewScheduleRepository()
+	customerRepo := postgres.NewCustomerRepository(postgresDB.DB)
+	locationRepo := postgres.NewLocationRepository(postgresDB.DB)
+	technicianRepo := postgres.NewTechnicianRepository(postgresDB.DB)
+	jobRepo := postgres.NewJobRepository(postgresDB.DB)
+	jobStatusHistoryRepo := postgres.NewJobStatusHistoryRepository(postgresDB.DB)
+	serviceRepo := postgres.NewServiceRepository(postgresDB.DB)
+	invoiceRepo := postgres.NewInvoiceRepository(postgresDB.DB)
+	paymentRepo := postgres.NewPaymentRepository(postgresDB.DB)
+	quoteRepo := postgres.NewQuoteRepository(postgresDB.DB)
+	equipmentRepo := postgres.NewEquipmentRepository(postgresDB.DB)
+	consumablesRepo := postgres.NewConsumablesRepository(postgresDB.DB)
+	stockRepo := postgres.NewStockRepository(postgresDB.DB)
+	tagRepo := postgres.NewTagRepository(postgresDB.DB)
+	noteRepo := postgres.NewNoteRepository(postgresDB.DB)
+	hourlyRateRepo := postgres.NewHourlyRateRepository(postgresDB.DB)
+	scheduleRepo := postgres.NewScheduleRepository(postgresDB.DB)
 
 	// Initialize Services
 	customerService := services.NewCustomerService(customerRepo)
