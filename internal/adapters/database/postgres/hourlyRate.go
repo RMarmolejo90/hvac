@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type HourlyRateRepository struct {
 }
 
 func NewHourlyRateRepository(db *gorm.DB) *HourlyRateRepository {
-	return &HourlyRateRepository{db: db}
+	return &HourlyRateRepository{db: postgresDB.DB}
 }
 
 func (r *HourlyRateRepository) Create(ctx context.Context, hourlyRate *domain.HourlyRate) error {

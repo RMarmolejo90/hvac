@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type ServiceRepository struct {
 }
 
 func NewServiceRepository(db *gorm.DB) *ServiceRepository {
-	return &ServiceRepository{db: db}
+	return &ServiceRepository{db: postgresDB.DB}
 }
 
 func (r *ServiceRepository) Create(ctx context.Context, service *domain.Service) error {

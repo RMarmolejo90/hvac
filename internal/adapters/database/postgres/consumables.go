@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type ConsumablesRepository struct {
 }
 
 func NewConsumablesRepository(db *gorm.DB) *ConsumablesRepository {
-	return &ConsumablesRepository{db: db}
+	return &ConsumablesRepository{db: postgresDB.DB}
 }
 
 func (r *ConsumablesRepository) Create(ctx context.Context, consumable *domain.Consumables) error {

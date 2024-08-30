@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type JobRepository struct {
 }
 
 func NewJobRepository(db *gorm.DB) *JobRepository {
-	return &JobRepository{db: db}
+	return &JobRepository{db: postgresDB.DB}
 }
 
 func (r *JobRepository) Create(ctx context.Context, job *domain.Job) error {

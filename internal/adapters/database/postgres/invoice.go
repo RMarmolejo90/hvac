@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type InvoiceRepository struct {
 }
 
 func NewInvoiceRepository(db *gorm.DB) *InvoiceRepository {
-	return &InvoiceRepository{db: db}
+	return &InvoiceRepository{db: postgresDB.DB}
 }
 
 func (r *InvoiceRepository) Create(ctx context.Context, invoice *domain.Invoice) error {

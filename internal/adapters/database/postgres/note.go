@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type NoteRepository struct {
 }
 
 func NewNoteRepository(db *gorm.DB) *NoteRepository {
-	return &NoteRepository{db: db}
+	return &NoteRepository{db: postgresDB.DB}
 }
 
 func (r *NoteRepository) Create(ctx context.Context, note *domain.Note) error {

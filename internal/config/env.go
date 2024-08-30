@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/rmarmolejo90/hvac/config/log"
+	"github.com/rmarmolejo90/hvac/internal/config/log"
 
 	"github.com/joho/godotenv"
 )

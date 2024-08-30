@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type TechnicianRepository struct {
 }
 
 func NewTechnicianRepository(db *gorm.DB) *TechnicianRepository {
-	return &TechnicianRepository{db: db}
+	return &TechnicianRepository{db: postgresDB.DB}
 }
 
 func (r *TechnicianRepository) Create(ctx context.Context, technician *domain.Technician) error {

@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type CustomerRepository struct {
 }
 
 func NewCustomerRepository(db *gorm.DB) *CustomerRepository {
-	return &CustomerRepository{db: db}
+	return &CustomerRepository{db: postgresDB.DB}
 }
 
 func (r *CustomerRepository) Create(ctx context.Context, customer *domain.Customer) error {

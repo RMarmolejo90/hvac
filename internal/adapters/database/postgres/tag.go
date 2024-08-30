@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type TagRepository struct {
 }
 
 func NewTagRepository(db *gorm.DB) *TagRepository {
-	return &TagRepository{db: db}
+	return &TagRepository{db: postgresDB.DB}
 }
 
 func (r *TagRepository) Create(ctx context.Context, tag *domain.Tag) error {

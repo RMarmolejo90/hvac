@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type PaymentRepository struct {
 }
 
 func NewPaymentRepository(db *gorm.DB) *PaymentRepository {
-	return &PaymentRepository{db: db}
+	return &PaymentRepository{db: postgresDB.DB}
 }
 
 func (r *PaymentRepository) Create(ctx context.Context, payment *domain.Payment) error {

@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -12,8 +13,9 @@ type QuoteRepository struct {
 	db *gorm.DB
 }
 
+// Corrected constructor function
 func NewQuoteRepository(db *gorm.DB) *QuoteRepository {
-	return &QuoteRepository{db: db}
+	return &QuoteRepository{db: postgresDB.DB}
 }
 
 func (r *QuoteRepository) Create(ctx context.Context, quote *domain.Quote) error {

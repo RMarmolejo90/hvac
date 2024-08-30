@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -13,7 +14,7 @@ type StockRepository struct {
 }
 
 func NewStockRepository(db *gorm.DB) *StockRepository {
-	return &StockRepository{db: db}
+	return &StockRepository{db: postgresDB.DB}
 }
 
 func (r *StockRepository) Create(ctx context.Context, stock *domain.Stock) error {
