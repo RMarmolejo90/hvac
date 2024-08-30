@@ -5,7 +5,6 @@ import (
 	"github.com/rmarmolejo90/hvac/internal/adapters/http"
 	"github.com/rmarmolejo90/hvac/internal/app/services"
 	"github.com/rmarmolejo90/hvac/internal/postgresDB"
-	"gorm.io/gorm"
 )
 
 // Handlers struct holds all the HTTP handlers.
