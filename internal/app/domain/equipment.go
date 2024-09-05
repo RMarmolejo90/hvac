@@ -17,6 +17,6 @@ type Equipment struct {
 	Serial        string
 	Name          string `gorm:"type:varchar(100);not null"`
 	Location      string
-	Notes         string
+	Notes         []Note
 	Consumables   []Consumables
 }

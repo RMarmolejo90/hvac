@@ -1,4 +1,5 @@
 package domain
+
 import (
 	"time"
 
@@ -9,12 +10,13 @@ type Job struct {
 	gorm.Model
 	CustomerID     uint
 	LocationID     uint
-	TechnicianID   uint
+	Technicians    []Technician
 	ScheduleID     uint // Foreign key to the Schedule model
 	ScheduledDate  time.Time
 	CompletionDate *time.Time
 	Status         string `gorm:"type:varchar(20);not null;check:status IN ('scheduled', 'working', 'paused', 'delayed', 'rescheduled', 'cancelled', 'needs quote', 'quote sent', 'quote approved', 'awaiting parts', 'ready to schedule', 'requires return', 'completed')"`
-	Notes          string
+	Description    string `gorm:"type:text; not null"`
+	Notes          []Note
 	MaterialsCost  float64
 	LaborCost      float64
 	StatusHistory  []JobStatusHistory

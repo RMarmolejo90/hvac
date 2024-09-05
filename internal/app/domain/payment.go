@@ -1,4 +1,5 @@
 package domain
+
 import (
 	"time"
 
@@ -11,4 +12,5 @@ type Payment struct {
 	PaymentDate   time.Time
 	Amount        float64 `gorm:"not null;check:amount >= 0"`
 	PaymentMethod string  `gorm:"type:varchar(50);not null"`
+	Notes         string  `gorm:"type:text"`
 }

@@ -1,4 +1,5 @@
 package domain
+
 import "gorm.io/gorm"
 
 type Stock struct {
@@ -9,5 +10,6 @@ type Stock struct {
 	Description  string
 	Cost         float64
 	Quantity     int
-	Jobs         []Job `gorm:"many2many:job_stock_items;"`
+	Jobs         []Job     `gorm:"many2many:job_stock_items;foreignKey:ID;joinForeignKey:StockID;References:ID;joinReferences:JobID"`          // Stock used in jobs
+	Services     []Service `gorm:"many2many:services_using_stock;foreignKey:ID;joinForeignKey:StockID;References:ID;joinReferences:ServiceID"` // Stock used in services
 }

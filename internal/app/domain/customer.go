@@ -13,4 +13,5 @@ type Customer struct {
 	HourlyRate   HourlyRate `gorm:"foreignkey:HourlyRateID"` // Association to HourlyRate
 	Locations    []Location
 	Jobs         []Job
+	Notes        []Note
 }
