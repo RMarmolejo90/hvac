@@ -1,4 +1,5 @@
 package domain
+
 import (
 	"time"
 
@@ -12,4 +13,5 @@ type Quote struct {
 	QuoteDate   time.Time
 	Price       float64 `gorm:"not null"`
 	Description string  `gorm:"type:text;not null"`
+	Status      string  `gorm:"type:varchar(20);not null;check:status IN ('not sent', 'awaiting response', 'approved', 'declined')"`
 }
