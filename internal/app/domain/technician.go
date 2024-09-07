@@ -13,7 +13,7 @@ type Technician struct {
 	Email     string `gorm:"type:varchar(100);not null;unique"`
 	Phone     string `gorm:"type:varchar(20);not null"`
 	HireDate  time.Time
-	Status    string `gorm:"type:varchar(20);not null"`
-	Jobs      []Job
-	Schedules []Schedule // Relationship to Schedule
+	Status    string     `gorm:"type:varchar(20);not null"`
+	Jobs      []Job      // One-to-many relationship with Jobs
+	Schedules []Schedule // One-to-many relationship with Schedules
 }
