@@ -2,8 +2,9 @@ package postgres
 
 import (
 	"context"
+
 	"github.com/rmarmolejo90/hvac/internal/app/domain"
-	"github.com/rmarmolejo90/hvac/internal/ports"
+	"github.com/rmarmolejo90/hvac/internal/postgresDB"
 	"gorm.io/gorm"
 )
 
@@ -11,8 +12,8 @@ type ContactMethodRepository struct {
 	db *gorm.DB
 }
 
-func NewContactMethodRepository(db *gorm.DB) ports.ContactMethodPort {
-	return &ContactMethodRepository{db: db}
+func NewContactMethodRepository(db *gorm.DB) *ContactMethodRepository {
+	return &ContactMethodRepository{db: postgresDB.DB}
 }
 
 func (r *ContactMethodRepository) Create(ctx context.Context, contactMethod *domain.ContactMethod) error {
