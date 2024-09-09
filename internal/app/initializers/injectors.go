@@ -10,6 +10,7 @@ import (
 // Handlers struct holds all the HTTP handlers.
 type Handlers struct {
 	CustomerHandler         *http.CustomerHandler
+	ContactMethodHandler    *http.ContactMethodHandler
 	LocationHandler         *http.LocationHandler
 	TechnicianHandler       *http.TechnicianHandler
 	JobHandler              *http.JobHandler
@@ -19,6 +20,7 @@ type Handlers struct {
 	PaymentHandler          *http.PaymentHandler
 	QuoteHandler            *http.QuoteHandler
 	EquipmentHandler        *http.EquipmentHandler
+	EventHandler            *http.EventHandler
 	ConsumablesHandler      *http.ConsumablesHandler
 	StockHandler            *http.StockHandler
 	TagHandler              *http.TagHandler
@@ -31,6 +33,7 @@ type Handlers struct {
 func InitHandlers() *Handlers {
 	// Initialize Repositories
 	customerRepo := postgres.NewCustomerRepository(postgresDB.DB)
+	contactMethodRepo := postgres.NewContactMethodRepository(postgresDB.DB)
 	locationRepo := postgres.NewLocationRepository(postgresDB.DB)
 	technicianRepo := postgres.NewTechnicianRepository(postgresDB.DB)
 	jobRepo := postgres.NewJobRepository(postgresDB.DB)
@@ -40,6 +43,7 @@ func InitHandlers() *Handlers {
 	paymentRepo := postgres.NewPaymentRepository(postgresDB.DB)
 	quoteRepo := postgres.NewQuoteRepository(postgresDB.DB)
 	equipmentRepo := postgres.NewEquipmentRepository(postgresDB.DB)
+	eventRepo := postgres.NewEventRepository(postgresDB.DB)
 	consumablesRepo := postgres.NewConsumablesRepository(postgresDB.DB)
 	stockRepo := postgres.NewStockRepository(postgresDB.DB)
 	tagRepo := postgres.NewTagRepository(postgresDB.DB)
@@ -49,6 +53,7 @@ func InitHandlers() *Handlers {
 
 	// Initialize Services
 	customerService := services.NewCustomerService(customerRepo)
+	contactMethodService := services.NewContactMethodService(contactMethodRepo)
 	locationService := services.NewLocationService(locationRepo)
 	technicianService := services.NewTechnicianService(technicianRepo)
 	jobService := services.NewJobService(jobRepo)
@@ -58,6 +63,7 @@ func InitHandlers() *Handlers {
 	paymentService := services.NewPaymentService(paymentRepo)
 	quoteService := services.NewQuoteService(quoteRepo)
 	equipmentService := services.NewEquipmentService(equipmentRepo)
+	eventService := services.NewEventService(eventRepo)
 	consumablesService := services.NewConsumablesService(consumablesRepo)
 	stockService := services.NewStockService(stockRepo)
 	tagService := services.NewTagService(tagRepo)
@@ -68,6 +74,7 @@ func InitHandlers() *Handlers {
 	// Initialize Handlers
 	return &Handlers{
 		CustomerHandler:         http.NewCustomerHandler(customerService),
+		ContactMethodHandler:    http.NewContactMethodHandler(contactMethodService),
 		LocationHandler:         http.NewLocationHandler(locationService),
 		TechnicianHandler:       http.NewTechnicianHandler(technicianService),
 		JobHandler:              http.NewJobHandler(jobService),
@@ -77,6 +84,7 @@ func InitHandlers() *Handlers {
 		PaymentHandler:          http.NewPaymentHandler(paymentService),
 		QuoteHandler:            http.NewQuoteHandler(quoteService),
 		EquipmentHandler:        http.NewEquipmentHandler(equipmentService),
+		EventHandler:            http.NewEventHandler(eventService),
 		ConsumablesHandler:      http.NewConsumablesHandler(consumablesService),
 		StockHandler:            http.NewStockHandler(stockService),
 		TagHandler:              http.NewTagHandler(tagService),
